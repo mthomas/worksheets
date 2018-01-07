@@ -23,6 +23,9 @@ jobs:
       - run: sudo apt install postgresql-client
       - run: psql ws_test ws_user -h localhost -p 5432 -f /go/src/github.com/helloeave/worksheets/schema.sql
 
+      # golang deps
+      - run: go get -v -t -d ./...
+
       # go.uuid issue
       - run: pushd ../../satori
       - run: rm -Rf go.uuid
@@ -32,7 +35,6 @@ jobs:
       - run: popd
       - run: popd
 
-      # golang
-      - run: go get -v -t -d ./...
+      # testing
       - run: go test -v ./...
       - run: go run tools/wstest.go `find features -name '*.feature'`
