@@ -23,6 +23,15 @@ jobs:
       - run: sudo apt install postgresql-client
       - run: psql ws_test ws_user -h localhost -p 5432 -f /go/src/github.com/helloeave/worksheets/schema.sql
 
+      # go.uuid issue
+      - run: pushd ../../satori
+      - run: rm -Rf go.uuid
+      - run: git clone https://github.com/satori/go.uuid.git
+      - run: pushd go.uuid
+      - run: git checkout 063359185d32c6b045fa171ad7033ea545864fa1
+      - run: popd
+      - run: popd
+
       # golang
       - run: go get -v -t -d ./...
       - run: go test -v ./...
