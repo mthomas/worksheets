@@ -27,15 +27,14 @@ jobs:
       - run: go get -v -t -d ./...
 
       # go.uuid issue
-      - run: pushd ../../satori
+      - run: cd /go/src/github.com/satori
       - run: rm -Rf go.uuid
       - run: git clone https://github.com/satori/go.uuid.git
-      - run: pushd go.uuid
+      - run: cd go.uuid
       - run: pwd
       - run: git log --oneline
       - run: git checkout 063359185d32c6b045fa171ad7033ea545864fa1
-      - run: popd
-      - run: popd
+      - run: cd /go/src/github.com/helloeave/worksheets
 
       # testing
       - run: go test -v ./...
