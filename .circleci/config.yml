@@ -31,6 +31,7 @@ jobs:
       - run: rm -Rf go.uuid
       - run: git clone https://github.com/satori/go.uuid.git
       - run: pushd go.uuid
+      - run: pwd
       - run: git log --oneline
       - run: git checkout 063359185d32c6b045fa171ad7033ea545864fa1
       - run: popd
